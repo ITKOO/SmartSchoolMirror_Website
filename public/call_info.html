@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>스스미 호출 페이지</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/> -->
+    <link type="text/css" rel="stylesheet" href="/css/materialize.css"  media="screen,projection"/>
+    <style> #CONTENTS{ min-height: 600px; }</style>
+  </head>
+  <body>
+
+    <!-- 상단 네비게이션 -->
+    <nav class="teal darken-2">
+      <div class="nav-wrapper">
+        <div class="container">
+          <a href="login.html" class="breadcrumb">Smart School Mirrior</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 내용 부분 -->
+    <div class="container" id="CONTENTS" >
+      <form id="FRM">
+        <div class="row z-depth-3">
+            <br><br>
+            <div class="col s12"><h3>학생 호출하기</h3></div>
+
+            <div class="col l12 m12 s12"><br><br></div>
+
+            <div class="col l4 m6 s7 input-field">
+             <input id="INPUT_GRADE" type="text" class="validate">
+             <label for="INPUT_GRADE">호출할 학생의 학년을 입력해주세요. ex) 2</label>
+           </div>
+
+           <div class="col l4 m6 s7 input-field">
+            <input id="INPUT_BAN" type="text" class="validate">
+            <label for="INPUT_BAN">호출할 학생의 반을 입력해주세요. ex) 6</label>
+          </div>
+
+          <div class="col l4 m6 s7 input-field">
+           <input id="INPUT_NUMBER" type="text" class="validate">
+           <label for="INPUT_NUMBER">호출할 학생의 번호을 입력해주세요. ex) 1</label>
+         </div>
+
+          <div class="col l12 m12 s12 input-field">
+           <input id="INPUT_NAME" type="text" class="validate">
+           <label for="INPUT_NAME">호출할 학생의 이름을 입력해주세요. ex) 홍길동</label>
+         </div>
+
+         <div class="col l12 m12 s12 input-field">
+          <input id="INPUT_LOCATION" type="text" class="validate">
+          <label for="INPUT_LOCATION">현재 선생님의 위치를 입력해주세요. ex) 2교무실</label>
+        </div>
+        <div class="col l7 m7 s7 input-field">
+           <a class="waves-effect teal darken-1 btn right" id = "BTN_CALL"><i class="material-icons left">send</i>호 출</a>
+          <div class="col l12 m12 s12"><br><br></div>
+       </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- 바닥글 영역 -->
+    <footer class="page-footer teal darken-2">
+      <div class="container">
+      <div class="footer-copyright">
+        <div class="container">
+        Copyright &copy; SSM
+        <a class="white-text right" >developed by ITKOO</a>
+        </div>
+      </div>
+      </div>
+    </footer>
+
+
+<!-- /////////////////////////////////// javascript 스크립트 영역 /////////////////////////////////// -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+
+<!-- jQuery와 Postcodify를 로딩한다 -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+
+<!-- firebase SDK 링크-->
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase-database.js"></script>
+
+  <script>
+  var config =
+  {
+    apiKey: "AIzaSyCZONag9weLafHMymaCqsiFr6ZqRqWtRSo",
+    authDomain: "school-smart-mirror.firebaseio.com",
+    databaseURL: "https://school-smart-mirror.firebaseio.com",
+    projectId: "school-smart-mirror",
+    storageBucket: "school-smart-mirror.appspot.com",
+    messagingSenderId: "888269883027"
+  };
+
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+  //uid 받기위해 회원가입 사용자 유저
+  var bc_user;
+
+  $('#BTN_CALL').click(function()
+  {
+    //빵집이름 값 변수로 가져오기
+    //학년
+    var grade = $("#INPUT_GRADE").val();
+    // 반
+    var ban = $("#INPUT_BAN").val();
+    //번호
+    var student_num = $("#INPUT_NUMBER").val();
+    // 선생님 성함
+    var student_name = $("#INPUT_NAME").val();
+    // 선생님의 현재 위치
+    var location = $("#INPUT_LOCATION").val();
+
+
+    $('#BTN_CALL').click(function()
+    {
+        firebase.database().ref('SmartSchoolMirror/Call_Student/BasicInfo/').set(
+        {
+            'grade' : grade,
+            'ban' : ban,
+            'student_num' : student_num,
+            'student_name' :  student_name,
+            'location' : location
+        }).then(function()
+        {
+            // 학생 호출 정보를 DB에 저장 후  페이지 재호출
+            alert(student_name + "을 스스미로 호출합니다!");
+            location.replace("call_info.html");
+
+          }, function(error)
+          {
+            //오류발생시
+              console.log(error);
+              alert(error.message);
+          });
+    });
+
+    });
+
+ </script>
+
+  </body>
+</html>
