@@ -10,7 +10,7 @@
   </head>
   <body>
     <!-- 상단 네비게이션 -->
-    <nav class="teal darken-2">
+    <nav class="teal accent-4">
       <div class="nav-wrapper">
         <div class="container">
           <a href="login.html" class="breadcrumb">Smart School Mirror</a>
@@ -23,37 +23,46 @@
       <form id="FRM">
         <div class="row z-depth-3">
             <br><br>
-            <div class="col l7 m12 s12 input-field">
+            <div class="col l12 m12 s12 input-field">
              <input id="INPUT_EMAIL" type="text" class="validate">
              <label for="INPUT_EMAIL">아이디(이메일 주소)를 입력해주세요.</label>
            </div>
 
-           <div class="col l7 m12 s12 input-field">
+           <div class="col l12 m12 s12 input-field">
             <input id="INPUT_PASSWORD" type="text" class="validate">
             <label for="INPUT_PASSWORD">비밀번호를 입력해주세요.</label>
           </div>
 
-          <div class="col l7 m12 s12 input-field">
+          <div class="col l12 m12 s12 input-field">
            <input id="INPUT_NAME" type="text" class="validate">
            <label for="INPUT_NAME">선생님의 성함을 입력해주세요.</label>
          </div>
 
-         <div class="col l7 m12 s12 input-field">
+         <div class="col l12 m12 s12 input-field">
           <input id="INPUT_PIN" type="text" class="validate">
           <label for="INPUT_PIN">인증코드를 입력해주세요.</label>
         </div>
-        <div class="col l7 m12 s12 input-field">
-           <a class="waves-effect teal darken-1 btn right"><i class="material-icons left">send</i>회 원 가 입</a>
+
+        <div class="col l12 m12 s12 input-field">
           <br><br>
        </div>
+
+        <div class="col l12 m12 s12 input-field">
+           <a class="teal btn right" id = "BTN_SIGNUP">회 원 가 입</a>
+       </div>
+
+       <div class="col l12 m12 s12 input-field">
+         <br><br>
+      </div>
+
         </div>
       </form>
     </div>
 
     <!-- 바닥글 영역 -->
-    <footer class="page-footer teal darken-2">
+    <footer class="page-footer teal accent-4">
       <div class="container">
-      <div class="footer-copyright">
+      <div class="footer-copyright teal accent-4">
         <div class="container">
         Copyright &copy; SSM
         <a href = "#" class="white-text right">도움말</a>
@@ -64,6 +73,81 @@
   <!-- /////////////////////////////////// javascript 스크립트 영역 /////////////////////////////////// -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
+
+  <!-- firebase SDK 링크-->
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase-database.js"></script>
+
+    <script>
+    var config =
+    {
+      apiKey: "AIzaSyCZONag9weLafHMymaCqsiFr6ZqRqWtRSo",
+      authDomain: "school-smart-mirror.firebaseio.com",
+      databaseURL: "https://school-smart-mirror.firebaseio.com",
+      projectId: "school-smart-mirror",
+      storageBucket: "school-smart-mirror.appspot.com",
+      messagingSenderId: "888269883027"
+    };
+
+    firebase.initializeApp(config);
+
+    var database = firebase.database();
+
+
+    $('#BTN_SIGNUP').click(function()
+    {
+      //회원가입 정보들 변수로 받아오기
+      // 메일
+      var email = $("#INPUT_EMAIL").val();
+
+      // 비밀번호
+      var password = $("INPUT_PASSWORD").val();
+
+      //선생님 성함
+      var name = $("#INPUT_NAME").val();
+
+      // 학교별 인증번호
+      var pin = $("#INPUT_PIN").val();
+
+      //메일 회원가입에 성공했을 경우
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(
+      function()
+      {
+          var user = firebase.auth().currentUser;
+
+          console.log(user);
+
+          firebase.database().ref('SmartSchoolMirror/WebSite/SignUpInfo/').set(
+          {
+              'email' : email,
+              'password' :  password,
+              'name' : name,
+              'pin' : pin,
+          }).then(function()
+          {
+
+              alert("스스미 가입을 축하드립니다!");
+              window.location.href="call_info.html?";
+              // location.href="pratice.html
+              // window.location.href="pratice.html";
+              // location.reload();
+
+              // location.reload();
+            }, function(error)
+            {
+                console.log(error);
+                alert(error.message);
+            });
+            // 자동 로그인 성공으로 간주 = onAuthStateChanged() 가 동작함
+            }).catch(function(error){
+            //메일 회원 가입에 실패 했을 때
+            alert(error.message);
+            });
+      });
+
+   </script>
 
   <script>
   </script>
