@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>학생호출 사이트</title>
+
+    <!-- materialize의 각종 아이콘 집합 css -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- materialize css -->
+    <link rel = "stylesheet" type = "text/css" href = "css/materialize.css">
+    <link rel = "stylesheet" type = "text/css" href = "css/ssm.css">
+
+  </head>
+
+  <body>
+<!-- 상단 바 -->
+    <nav class = "blue darken-4">
+        <div class="nav-wrapper">
+            <a href="" class="brand-logo">&nbsp Summon Student</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href=""><i class="large material-icons">assignment_ind</i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- 내용 부분 -->
+    <div class = "container">
+        <form  class = "col s12">
+            <div class = "row z-depth-1" id = "CONTENTS">
+                <div class = "row">
+                <!-- 학년 선택 -->
+                <div class="input-field col s4">
+                  <select id ="GRADE_SELECT">
+                    <option value="" disabled selected>학년 선택</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+
+                <!-- 반 선택 -->
+                <div class="input-field col s4">
+                    <select id ="CLASS_SELECT">
+                      <option value="" disabled selected>반 선택</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>    
+                    </select>
+                  </div>
+
+                <!-- 번호 선택  -->
+                <div class="input-field col s4">
+                  <select id = "NUMBER_SELECT">
+                    <option value="" disabled selected>번호 선택</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- 이름 입력 -->
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="NAME_INPUT" type="text">
+                  <label for="NAME_INPUT">학생 이름을 입력해주세요.</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="LOCATION_INPUT" type="text">
+                    <label for="LOCATION_INPUT">선생님의 위치를 입력해주세요.</label>
+                </div>
+                
+                <div class="col l7 m7 s7 input-field">
+                    <br><br>
+                    <a class="waves-effect  light-blue darken-4 btn right" id = "BTN_SUMMON"><i class="material-icons left">send</i>호 출 하 기</a>
+                    <div class="col l12 m12 s12"><br><br></div>
+                </div>
+              </div>
+            </div>        
+        </form>
+    </div>
+
+<!-- 바닥글 영역 -->
+    <footer class="page-footer blue darken-4">
+        <div class="container">
+            Copyright &copy; SSM
+            <a class="white-text right" >@ITKOO</a>
+        </div>
+    </footer>
+   
+  
+    
+    
+    <!-- !!!!!!!!!!!!!!!!! script영역 !!!!!!!!!!!!!!!!!!!!!  -->
+
+    <!-- firebase 관련 js -->
+    <script src = "https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-messaging.js"></script>
+
+    <!-- jquery 관련 js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- firebase config 관련 js -->
+    <script src = "js/fireinit.js"></script>
+
+    <!-- materialize 관련 js -->
+    <!-- <script src="js/materialize.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <script>
+      $(document).ready(function() 
+      {
+        console.log("ready");
+        // materialize 에서 selectbox가 보이게 할려면 이 코드를 반드시 작성
+        $('select').material_select();
+
+         // 입력 창 밑에 몇 글자 작성했는지 체크
+        $('input#EXPRESS_INPUT, textarea#REASON_INPUT, textarea#WANT_TO_DO_INPUT').characterCounter();
+      });
+
+      
+
+      $("#BTN_SUMMON").click(function()
+      {
+        var summonRef = firebase.database().ref("SmartSchoolMirror/Call_Student/BasicInfo/");
+
+        var grade_select = $("#GRADE_SELECT").val(); // 학년 선택
+        var class_select = $("#CLASS_SELECT").val();  // 반 선택
+        var number_select = $("#NUMBER_SELECT").val(); // 번호 선택
+
+        var name = $("#NAME_INPUT").val(); // 학생 이름 
+        var location = $("#LOCATION_INPUT").val(); // 위치 
+
+        var isRight;
+        var studentID;
+
+        if(grade_select == null || class_select == null || number_select == null)
+        {
+          alert("학생의 학년, 반, 번호를 선택해주세요.");
+          isRight = false;
+        }
+
+        else if(name == "")
+        {
+          alert("학생의 이름을 입력해주세요.");
+          isRight = false;
+        }
+
+        else if(location == "")
+        {
+          alert("선생님의 현재 위치를 입력해주세요.");
+          isRight = false;
+        }
+
+        else
+        {
+            isRight = true;
+            if(number_select < 10)
+            {
+                studentID = grade_select.concat(class_select, "0", number_select);
+            } 
+
+            else
+            {
+                studentID = grade_select.concat(class_select, number_select);
+            }
+        }
+
+        if(isRight == true)
+        {
+            summonRef.set(
+            {
+                'grade' : grade_select,
+                'ban' : class_select,
+                'student_num' : number_select,
+                'student_name' : name,
+                'location' : location
+            }).then(function()
+            {
+                alert(studentID + " " + name + "학생이 호출되었습니다!");
+                window.location.href="summon_student.html";
+            });
+
+            console.log("학년 : " + grade_select);
+            console.log("반 : " + class_select);
+            console.log("번호 : " + number_select);
+            console.log("통번호 : " + studentID);
+            console.log("이름 : " + name);
+            console.log("위치 : " + location);
+        } // end of if
+
+      }); // end of SUMMONBTN 클릭
+
+    </script>
+  </body>
+</html>

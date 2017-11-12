@@ -5,9 +5,6 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
     <title>스스미, 스마트 스쿨 미러 웹사이트</title>
 
     <!-- Bootstrap core CSS -->
@@ -36,13 +33,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="#ABOUT">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#summon">Summon</a>
+              <a class="nav-link js-scroll-trigger" href="#SUMMON">Summon</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a class="nav-link js-scroll-trigger" href="#CONTACT">Contact</a>
             </li>
           </ul>
         </div>
@@ -68,35 +65,36 @@
     </header>
 
     <!-- About Section -->
-    <section id="about" class="content-section text-center">
+    <section id="ABOUT" class="content-section text-center">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>About Smart School Mirror </h2>
             <p>스마트 스쿨 미러,  "스스미"는 학교 생활을 편리하게 만들어주는 스마트 거울입니다.</p>
-              <p><a href="http://startbootstrap.com/template-overviews/grayscale/">" Hi mirror! "</a> 로 스마트 스쿨 미러, 스스미를 호출하세요.</p>
-              <p><a href="http://startbootstrap.com/template-overviews/grayscale/">" What schedule? "</a> 로 현재 학교 일정을 확인하세요.</p>
-              <p><a href="http://startbootstrap.com/template-overviews/grayscale/">" What school food? "</a> 로 오늘의 학교 급식을 알아보세요.</p>
-              <p><a href="http://startbootstrap.com/template-overviews/grayscale/">" How is the weather? "</a> 로 현재 날씨를 확인하세요.</p>
-              <p><a href="http://startbootstrap.com/template-overviews/grayscale/">" What date/ time is it today?"</a> 로 현재 시간 및 날짜를 확인하세요.</p>
+              <p><span class = "color_p">" Hi mirror! "</span> 로 스마트 스쿨 미러, 스스미를 호출하세요.</p>
+              <p><span class = "color_p">" What schedule? "</span> 로 현재 학교 일정을 확인하세요.</p>
+              <p><span class = "color_p">" What school food? "</span> 로 오늘의 학교 급식을 알아보세요.</p>
+              <p><span class = "color_p">" How is the weather? "</span> 로 현재 날씨를 확인하세요.</p>
+              <p><span class = "color_p">" What date time is it today?"</span> 로 오늘의 날짜를 확인하세요.</p>
+              <p><span class = "color_p">" What time is it now?"</span> 로 현재 시간을 확인하세요.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Download Section -->
-    <section id="summon" class="download-section content-section text-center">
+    <section id="SUMMON" class="download-section content-section text-center">
       <div class="container">
         <div class="col-lg-8 mx-auto">
           <h2>Summon Student</h2>
           <p>선생님이 어떤 곳에 계시더라도<br>언제 어디서나 웹 ,모바일 상관없이 학생을 호출 할 수 있습니다. </p>
-          <a href="call_info.html" class="btn btn-default btn-lg">학생 호출하러 가기</a>
+          <a href="summon_student.html" class="btn btn-default btn-lg">학생 호출하러 가기</a>
         </div>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="content-section text-center">
+    <section id="CONTACT" class="content-section text-center">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
@@ -110,15 +108,15 @@
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="https://github.com/kimdoori/SmartSchoolMirror" class="btn btn-default btn-lg">
+                <a href="https://github.com/ITKOO/SmartSchoolMirror_Website" class="btn btn-default btn-lg">
                   <i class="fa fa-github fa-fw"></i>
-                  <span class="network-name">Github</span>
+                  <span class="network-name">Github_Web</span>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg">
-                  <i class="fa fa-google-plus fa-fw"></i>
-                  <span class="network-name">Google+</span>
+                <a href="https://github.com/kimdoori/SmartSchoolMirror" class="btn btn-default btn-lg">
+                  <i class="fa fa-github fa-fw"></i>
+                  <span class="network-name">Github</span>
                 </a>
               </li>
             </ul>
@@ -129,31 +127,19 @@
 
     <!-- Map Section -->
     <div id="map"></div>
-    <script>
-
-    function initMap()
-    {
-      var uluru = {lat: 37.466375, lng:  126.932903};
-      var map = new google.maps.Map(document.getElementById('map'),
-      {
-        zoom: 14,
-        center: uluru
-      });
-      var marker = new google.maps.Marker
-      ({
-        position: uluru,
-        map: map
-      });
-    }
-
-    </script>
-
+ 
     <!-- Footer -->
     <footer>
       <div class="container text-center">
+        <p>@ITKOO</p>
         <p>Copyright &copy; SSM</p>
       </div>
     </footer>
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! script 영역 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+    <!-- Map js -->
+    <script src = "js/ssm.js"></script>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -163,7 +149,7 @@
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <!--Google Map API-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgWxgNU_NEvuCkF77DAMCC1XPphzZl4IA&callback=initMap"></script>
 
     <!-- Custom scripts for this template -->
