@@ -16,7 +16,7 @@
     <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="css/grayscale.css" rel="stylesheet">
 
   </head>
 
@@ -39,8 +39,14 @@
               <a class="nav-link js-scroll-trigger" href="#SUMMON">Summon</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#CONTACT">Contact</a>
+              <a class="nav-link js-scroll-trigger" href="#MAKER">Maker</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#ARTICLE">Article</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#CONTACT">Contact</a>
+            </li>   
           </ul>
         </div>
       </div>
@@ -50,12 +56,13 @@
     <header class="masthead">
       <div class="intro-body">
         <div class="container">
+          <br><br><br>
           <div class="row">
             <div class="col-lg-8 mx-auto">
               <h1 class="brand-heading">Smart School Mirror</h1>
               <p class="intro-text">"Hi Mirror"
                 <br>한마디로 학교 안 모든 기능을 스마트하게.</p>
-              <a href="#about" class="btn btn-circle js-scroll-trigger">
+              <a href="#ABOUT" class="btn btn-circle js-scroll-trigger">
                 <i class="fa fa-angle-double-down animated"></i>
               </a>
             </div>
@@ -82,13 +89,92 @@
       </div>
     </section>
 
-    <!-- Download Section -->
-    <section id="SUMMON" class="download-section content-section text-center">
+    <!-- Summon Section -->
+    <section id="SUMMON" class="summon-section content-section text-center">
       <div class="container">
         <div class="col-lg-8 mx-auto">
           <h2>Summon Student</h2>
           <p>선생님이 어떤 곳에 계시더라도<br>언제 어디서나 웹 ,모바일 상관없이 학생을 호출 할 수 있습니다. </p>
           <a href="summon_student.html" class="btn btn-default btn-lg">학생 호출하러 가기</a>
+        </div>
+      </div>
+    </section>
+
+     <!-- Maker Section -->
+     <section id="MAKER" class="maker-section text-center">
+      <div class="container">
+        <h2>Maker "DoGuDoGu"</h2>
+        <p></p>
+        <br><br>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="team-member">
+              <img class="mx-auto rounded-circle" src="img/jiwon.jpg" alt="">
+              <h4>Jiwon Koo</h4>
+              <p class="text-muted">Web Developer</p>
+              <ul class="list-inline social-buttons">
+                <!-- facebook -->
+                <li class="list-inline-item">
+                  <a href="https://www.facebook.com/profile.php?id=100011415680114">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <!-- gmial -->
+                <li class="list-inline-item">
+                  <a href="mailto:itkoo2000@gmail.com">
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>       
+                <!-- github -->
+                <li class="list-inline-item">
+                  <a href="https://github.com/ITKOO">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>              
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="team-member">
+              <img class="mx-auto rounded-circle" src="img/doori.jpg" alt="">
+              <h4>Doori Kim</h4>
+              <p class="text-muted">Iot Developer</p>
+              <ul class="list-inline social-buttons">
+                <!-- facebook -->
+                <li class="list-inline-item">
+                  <a href="https://www.facebook.com/profile.php?id=100005166558802">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <!-- gmial -->
+                <li class="list-inline-item">
+                    <a href="mailto:rlaenfl0228@gmail.com">
+                      <i class="fa fa-envelope"></i>
+                    </a>
+                </li>                
+                <!-- github -->
+                <li class="list-inline-item">
+                  <a href="https://github.com/kimdoori">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </section>
+
+    <!-- Article Section -->
+    <section id="ARTICLE" class="article-section text-center">
+      <div class="container">
+        <div class="col-lg-8 mx-auto">
+          <div>
+          <h2 id = "acticle_p">SSM &nbsp;Article</h2>
+          <p>스마트 스쿨 미러, 스스미의 기사</p>
+          </div>
+          <a href="http://www.bloter.net/archives/292986" class="btn btn-default2 btn-lg">기사 보러가기</a>
         </div>
       </div>
     </section>
@@ -125,6 +211,7 @@
       </div>
     </section>
 
+
     <!-- Map Section -->
     <div id="map"></div>
  
@@ -138,13 +225,13 @@
 
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! script 영역 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
-    <!-- Map js -->
-    <script src = "js/ssm.js"></script>
-
-    <!-- Bootstrap core JavaScript -->
+     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Map js -->
+    <script src = "js/ssm.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>

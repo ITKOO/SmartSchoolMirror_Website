@@ -36,7 +36,7 @@ a {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  color: #42DCA3; }
+  color: #0091ea; }
   a:focus, a:hover {
     text-decoration: none;
     color: #1d9b6c; }
@@ -139,7 +139,11 @@ a {
   padding-top: 150px;
   padding-bottom: 150px; }
 
-.download-section {
+.maker-section {
+  padding-top: 150px;
+  padding-bottom: 150px; }
+
+.summon-section {
   color: white;
   background: url("../img/class-bg.jpg") no-repeat center center scroll;
   background-color: black;
@@ -147,6 +151,38 @@ a {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; }
+
+.article-section {
+    color: white;
+    background: url("../img/article.jpg") no-repeat center center scroll;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+    width: 100%;
+    height: 95%;
+    padding-top: 6%;
+  }
+#acticle_p
+{
+  line-height: 5%;
+}
+.color_p{color : #0091ea;}
+
+.team-member {
+  margin-bottom: 50px;
+  text-align: center; }
+  .team-member img {
+    width: 225px;
+    height: 225px;
+    border: 7px solid white; }
+  .team-member h4 {
+    margin-top: 25px;
+    margin-bottom: 0;
+    text-transform: none; }
+  .team-member p {
+    margin-top: 0; }
 
 #map {
   width: 100%;
@@ -169,14 +205,27 @@ a {
   border-radius: 0; }
 
 .btn-default {
-  color: #42DCA3;
-  border: 1px solid #42DCA3;
+  color: #0091ea;
+  border: 1px solid #0091ea;
   background-color: transparent; }
+
   .btn-default:focus, .btn-default:hover {
     color: black;
-    border: 1px solid #42DCA3;
+    border: 1px solid #0091ea;
     outline: none;
-    background-color: #42DCA3; }
+    background-color: #0091ea; }
+
+    .btn-default2 {
+      color: #000000;
+      border: 1px solid #FFFFFF;
+      -webkit-text-fill-color: #FFFFFF;
+      background-color: transparent; }
+      .btn-default2:focus, .btn-default2:hover {
+        color: black;
+        border: 1px solid #000000;
+        outline: none;
+        -webkit-text-fill-color: #FFFFFF;
+        background-color: #000000; } 
 
 ul.banner-social-buttons {
   margin-top: 0; }
